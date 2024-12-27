@@ -1,7 +1,7 @@
 const form = document.querySelector("#contactForm");
 
 
-form.addEventListener("submit", async (req, res)=>{
+form.addEventListener("submit", async (e)=>{
     e.preventDefault()
     const data = {
         name : document.querySelector("#name").value ,
@@ -10,7 +10,7 @@ form.addEventListener("submit", async (req, res)=>{
         message : document.querySelector("#message").value
     }
     try{
-        await fetch("http://localhost:3000/contact" , {
+        await fetch("http://localhost:3000/api/contact" , {
             method : "POST",
             body : JSON.stringify(data)
         })
@@ -26,6 +26,6 @@ form.addEventListener("submit", async (req, res)=>{
         }
     }
     catch(e){
-        console.error(e)
+        console.log(e)
     }
 })
